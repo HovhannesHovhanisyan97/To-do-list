@@ -78,8 +78,12 @@ input1.addEventListener('keyup', function(e){
 })
 
 
+let timeout = null;
+
+
 
 function searchFn(){
+     console.log('a')
     let allLiItems = active.getElementsByClassName('newElem_creation')
     for(key of allLiItems){
         let item1 = key.textContent;
@@ -90,7 +94,12 @@ function searchFn(){
            key.classList.add('disp')
        }
     }
+
 }
 
 
-search.addEventListener('input',searchFn)
+search.addEventListener('input',function(){
+    clearTimeout(timeout);
+    timeout = setTimeout(searchFn,1000)
+})
+
